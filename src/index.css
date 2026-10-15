@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper text-ink-900 font-sans antialiased;
+    @apply dark:bg-ink-950 dark:text-ink-100;
+  }
+
+  /*
+   * TABULAR FIGURES on everything numeric.
+   *
+   * Proportional digits have different widths -- a "1" is narrower than a "8".
+   * In a live roster where confidence scores update twice a second, that makes
+   * numbers visibly jitter and columns fail to align. `tabular-nums` forces
+   * every digit to the same advance width. It is a one-line fix for a problem
+   * that otherwise makes a data-dense UI feel cheap.
+   */
+  .font-mono,
+  table,
+  [data-numeric] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /*
+   * VISIBLE KEYBOARD FOCUS -- part of the quality floor, not an extra.
+   * :focus-visible shows the ring for keyboard users without putting a ring
+   * around every mouse click.
+   */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2;
+    @apply ring-offset-paper dark:ring-offset-ink-950;
+  }
+
+  /* Respect the OS "reduce motion" setting. The register tile flash is
+     meaningful, but nobody should be forced to watch it. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  ::selection {
+    @apply bg-accent/20;
+  }
+}
+
+@layer components {
+  /* Small uppercase label used above section headings. It encodes WHERE you
+     are, so it earns its place -- it is not decoration. */
+  .eyebrow {
+    @apply text-eyebrow uppercase text-ink-400 dark:text-ink-500;
+  }
+
+  .card {
+    @apply rounded-card bg-white shadow-card ring-1 ring-ink-900/5;
+    @apply dark:bg-ink-900 dark:ring-white/5;
+  }
+
+  .divider {
+    @apply border-ink-900/8 dark:border-white/8;
+  }
+}

@@ -1,0 +1,7 @@
+from app.services.analytics_service import AnalyticsService
+from app.services.attendance_service import AttendanceService
+from app.services.auth_service import AuthService
+from app.services.chart_analytics_service import ChartAnalyticsService
+from app.services.enrollment_service import EnrollmentService
+from app.services.photo_service import PhotoService
+from app.services.recognition_service import RecognitionService
