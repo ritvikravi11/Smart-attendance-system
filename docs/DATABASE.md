@@ -260,7 +260,7 @@ backend/
     └── dump_ddl.py             Emits the full PostgreSQL DDL
 
 docs/
-└── schema.sql                  Generated DDL — paste into your report appendix
+└── alembic/versions/           Versioned database migrations
 ```
 
 ---

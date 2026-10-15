@@ -20,8 +20,8 @@ after a teammate pulls the repo, as part of a deployment step. A seed script
 that explodes on second run is a seed script people stop trusting.
 
 Usage:
-    python -m app.db.init_db              # roles + admin only
-    python -m app.db.init_db --demo       # also inserts demo data
+    python -m scripts.init_db             # roles + admin only
+    python -m scripts.init_db --demo      # also inserts demo data
 """
 
 import argparse

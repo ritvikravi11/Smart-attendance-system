@@ -3,7 +3,7 @@ ML layer interfaces and shared data types.
 
 WHY INTERFACES EXIST HERE
 -------------------------
-This is the file that makes the architecture claim in DESIGN.md (D-03, NFR-5.2)
+This module keeps the detector and embedder contracts explicit
 real rather than aspirational.
 
 `RecognitionService` will depend on `IEmbedder`, not on `ArcFaceEmbedder`. Two
@@ -119,7 +119,8 @@ class DetectedFace:
     as a (5, 2) float array. These are what alignment uses. A detector that
     returns only a box (Haar cascades, MediaPipe's simplest mode) forces you to
     run a SECOND landmark model before you can align -- which is the main reason
-    SCRFD was chosen over MediaPipe in DESIGN.md section 10.2.
+    SCRFD is used for the production detector while MediaPipe remains an
+    optional dependency for experimentation.
     """
 
     bbox: BoundingBox

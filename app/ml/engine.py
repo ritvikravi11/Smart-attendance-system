@@ -145,7 +145,7 @@ class FaceEngine:
         Load ONNX model weights into memory. Called once, from the startup hook.
 
         FIRST RUN: You must download the models first with:
-            python download_models.py
+            python -m scripts.download_models
         """
         if self._ready:
             logger.debug("Face engine already loaded; skipping")
@@ -165,7 +165,7 @@ class FaceEngine:
                 if not os.path.isfile(path):
                     raise FileNotFoundError(
                         f"{name} not found at {path}. "
-                        "Run 'python download_models.py' to download the models."
+                        "Run 'python -m scripts.download_models' to download the models."
                     )
 
             logger.info("Loading face models from %s ...", self._model_dir)

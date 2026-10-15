@@ -5,7 +5,7 @@ This script bypasses Alembic migrations (which are PostgreSQL-specific) and
 creates the schema from the ORM model definitions. Safe for SQLite.
 
 Usage:
-    python create_tables.py
+    python -m scripts.create_tables
 """
 
 import sys

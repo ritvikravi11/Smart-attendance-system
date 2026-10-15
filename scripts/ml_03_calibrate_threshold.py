@@ -42,7 +42,7 @@ Aim for 5+ people and 5+ images each. Then:
 
     python scripts/ml_03_calibrate_threshold.py calibration_data/
 
-Outputs a report to the terminal plus threshold_calibration.png for your
+Outputs a report to the terminal plus docs/threshold_calibration.png for your
 project document.
 """
 
@@ -271,7 +271,7 @@ def main() -> int:
         ax2.grid(alpha=0.3)
 
         plt.tight_layout()
-        out = Path("threshold_calibration.png")
+        out = Path("docs/threshold_calibration.png")
         plt.savefig(out, dpi=150)
         print(f"\nPlot saved to {out.resolve()}")
         print("Include this figure in your project report.")

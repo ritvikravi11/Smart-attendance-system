@@ -8,7 +8,7 @@ Downloads:
 Source: InsightFace official model zoo on GitHub/Hugging Face.
 
 Usage:
-    python download_models.py
+    python -m scripts.download_models
 """
 
 import os

@@ -37,7 +37,7 @@ For us the decisive feature is that it returns FIVE LANDMARKS alongside each
 box. Alignment needs them, and a box-only detector (Haar cascades, MediaPipe's
 basic mode) forces a second model into the pipeline. One model instead of two
 is fewer dependencies and fewer failure modes -- the reasoning behind decision
-D-03 in DESIGN.md.
+the detector abstraction used by the recognition pipeline.
 """
 
 import logging

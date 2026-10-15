@@ -2,93 +2,28 @@
 .env.*
 !.env.example
 
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+node_modules/
+dist/
+
+models/
+*.onnx
 *.db
 *.db-*
-*.zip
-/models/
-*.onnx
-dist/
-node_modules/
-__pycache__/
-*.py[cod]
-.pytest_cache/
-venv/
-.venv/
+*.sqlite
+*.sqlite3
 
+docs/schema.sql
+docs/threshold_calibration.png
 
-
-# Environment variables and secrets
-.env
-.env.*
-!.env.example
-
-# Python virtual environments
-venv/
-.venv/
-__pycache__/
-*.py[cod]
-.pytest_cache/
-
-# Frontend dependencies and builds
-node_modules/
-dist/
-
-# IDE and OS files
 .idea/
 .vscode/
 .DS_Store
 Thumbs.db
-
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-
-# Model files
-/models/
-*.onnx
-
-# Archives
-*.zip
-
-
-
-
-
-
-
-
-
-------------------------------------------------------------
-# Secrets
-.env
-.env.*
-!.env.example
-
-# Python
-venv/
-.venv/
-__pycache__/
-*.py[cod]
-.pytest_cache/
-
-# Frontend
-node_modules/
-dist/
-
-# ML models and generated files
-/models/
-*.onnx
-*.db
-*.sqlite
-*.sqlite3
-
-# IDE and OS
-.idea/
-.vscode/
-.DS_Store
-Thumbs.db
-
-# Archives
 *.zip
 mnt/
