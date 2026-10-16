@@ -42,11 +42,14 @@ export const tokenStore = {
   },
 };
 
-// Relative base URL. Vite's dev proxy forwards /api to :8000, and in
-// production the app is served from the same origin as the API -- so this
-// string is correct in both environments with no build-time substitution.
+// Vite's dev proxy forwards /api to :8000. In production, VITE_API_BASE_URL
+// points to the separately deployed FastAPI service; keeping a relative
+// fallback preserves same-origin deployments.
+const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || "/api/v1")
+  .replace(/\/$/, "");
+
 export const api = axios.create({
-  baseURL: "/api/v1",
+  baseURL: apiBaseUrl,
   headers: { "Content-Type": "application/json" },
 });
 
@@ -89,8 +92,9 @@ api.interceptors.response.use(
     // Singleton: concurrent 401s share ONE refresh instead of racing.
     if (!refreshPromise) {
       refreshPromise = axios
-        .post("/api/v1/auth/refresh", { refresh_token: refreshToken })
-        .then((res) => {
+.post(`${apiBaseUrl}/auth/refresh`, {
+  refresh_token: refreshToken,
+})        .then((res) => {
           tokenStore.set(res.data);
           return res.data.access_token;
         })

@@ -138,6 +138,28 @@ Download the InsightFace model only when face recognition is needed:
 npm install
 ```
 
+### Vercel deployment
+
+Vercel is configured for the React/Vite frontend through [`vercel.json`](vercel.json).
+The FastAPI backend and its face-recognition dependencies are not deployed by
+Vercel: ONNX Runtime and InsightFace require a persistent Python-capable
+service and are not suitable for the Vercel frontend build.
+
+1. Deploy the repository to Vercel. The configured build command is `npm run
+   build`, and the output directory is `dist`.
+2. Deploy the `app/` FastAPI service separately on a Python-capable host.
+3. In Vercel, add the project environment variable
+   `VITE_API_BASE_URL` with the public backend URL ending in `/api/v1`, for
+   example `https://api.example.com/api/v1`.
+4. Configure the backend `CORS_ORIGINS` value with the Vercel deployment URL.
+5. Keep `DATABASE_URL`, `SECRET_KEY`, Cloudinary credentials, and other backend
+   secrets only in the backend service environment; never add them to Vercel
+   frontend variables.
+
+The `.python-version` file pins Python tooling to 3.12 for any Python-capable
+deployment. This matches the highest ABI supported by the pinned
+`onnxruntime==1.18.1` dependency.
+
 ## Environment variables
 
 The application reads `.env`, which must never be committed. Important
